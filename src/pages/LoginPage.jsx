@@ -1,7 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router'
-import axios from 'axios'
-import myaxios from "../utils/myaxios"
+import React from 'react';
+import { Link } from 'react-router';
+import axios from 'axios';
+import myaxios from "../utils/myaxios";
+
+{/* 
+import { Link } from 'react-router-dom';
+<Link to="/userRegistration.html">Sign Up</Link>
+<Link to="/sendOtp.html">Forget Password</Link> */}
 
 const LoginPage = () => {
 
@@ -18,7 +23,7 @@ const LoginPage = () => {
         ).then((response)=>{
             if(response.data.status === "success")
             {
-                console.log(response.data);
+                localStorage.setItem("token", response.data.token)
             }
             else{
                 alert(response.data.message);
