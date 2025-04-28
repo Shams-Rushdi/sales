@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import axios from 'axios'
+import myaxios from "../utils/myaxios"
 
 const LoginPage = () => {
 
@@ -9,19 +10,23 @@ const LoginPage = () => {
         const formdata = new FormData(e.target);
         const data = Object.fromEntries(formdata);
 
-        console.log(data);
+        //console.log(data);
 
-        axios.post(
-            "https://inventory-api.teamrabbil.com/api/user-login",
+        myaxios.post(
+            "/user-login",
             data,
         ).then((response)=>{
-            console.log(response);
+            if(response.data.status === "success")
+            {
+                console.log(response.data);
+            }
+            else{
+                alert(response.data.message);
+            }
         }).catch((error)=>{
             console.log(error)
         });
-
     }
-
   return (
     <div>
     <div className="container">
