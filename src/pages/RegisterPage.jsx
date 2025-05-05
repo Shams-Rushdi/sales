@@ -4,6 +4,7 @@ import axios from 'axios';
 import myaxios from "../utils/myaxios";
 import { useNavigate  } from 'react-router';
 
+
 {/* 
 import { Link } from 'react-router-dom';
 <Link to="/userRegistration.html">Sign Up</Link>
@@ -19,6 +20,7 @@ const RegisterPage = () => {
         const data = Object.fromEntries(formdata);
 
         //console.log(data);
+        navigate("/login/");
 
         myaxios.post(
             "/user-registration",
@@ -26,8 +28,9 @@ const RegisterPage = () => {
         ).then((response)=>{
             if(response.data.status === "success")
             {
-                localStorage.setItem("token", response.data.token)
                 alert(response.data.message);
+                navigate("/login/");
+                //localStorage.setItem("token", response.data.token)
             }
             else{
                 alert(response.data.message);

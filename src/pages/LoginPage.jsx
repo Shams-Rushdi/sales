@@ -51,9 +51,9 @@ const LoginPage = () => {
                         <hr/>
                         <div className="float-end mt-3">
                             <span>
-                                <Link className="text-center ms-3 h6" href="userRegistration.html">Sign Up </Link>
+                                <Link className="text-center ms-3 h6" to="/register">Sign Up </Link>
                                 <span className="ms-1">|</span>
-                                <Link className="text-center ms-3 h6" href="sendOtp.html">Forget Password</Link>
+                                <Link className="text-center ms-3 h6" to="/reset-password">Forget Password</Link>
                             </span>
                         </div>
                         </form>
