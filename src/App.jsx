@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import PasswordReset from "./pages/PasswordReset";
 import PasswordResetOTP from "./pages/PasswordResetOTP";
+import SetPasswordPage from "./pages/SetPasswordPage";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/register" element={<RegisterPage/>}/>
       <Route path="/reset-password" element={<PasswordReset/>}/>
       <Route path="/reset-password-otp" element={<PasswordResetOTP/>}/>
+      <Route path="/set-new-password" element={<SetPasswordPage/>}/>
     </Routes>
     </BrowserRouter>
   )

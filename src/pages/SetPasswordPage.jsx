@@ -2,9 +2,10 @@ import React from 'react'
 import myaxios from '../utils/myaxios'; // ✅ Add this line
 import { useNavigate } from 'react-router';
 
-const PasswordResetOTP = () => {
+const SetPasswordPage = () => {
 
     const navigate = useNavigate();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,15 +15,14 @@ const PasswordResetOTP = () => {
         console.log(data);
 
         myaxios.post(
-                    "/verify-otp",
+                    "/reset-password",
                     data,
                 ).then((response)=>{
                     if(response.data.status === "success")
                     {
                         console.log(response.data);
                         localStorage.setItem("token", response.data.token)
-                       //alert(response.data.message);
-                        navigate("/set-new-password");
+                        navigate("/dashboard");
                     }
                     else{
                         alert(response.data.message || "Something went wrong");
@@ -31,21 +31,20 @@ const PasswordResetOTP = () => {
                     console.log(error)
                 });
             }
-    
 
 
   return (
     <div>
-        <div className="container">
+         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-7 col-lg-6 center-screen">
                     <div className="card animated fadeIn w-90  p-4">
                 <form onSubmit={handleSubmit}>
                         <div className="card-body">
-                            <h4>Submit OTP</h4>
+                            <h4>Reset Password</h4>
                             <br/>
-                            <label>Your OTP</label>
-                            <input id="otp" name="otp" placeholder="Enter Otp" className="form-control" type="text"/>
+                            <label>New Password</label>
+                            <input id="password" name="password" placeholder="New Password" className="form-control" type="password"/>
                             <br/>
                             <button type="submit" className="btn w-100 float-end bg-gradient-primary">Next</button>
                         </div>
@@ -58,4 +57,4 @@ const PasswordResetOTP = () => {
   )
 }
 
-export default PasswordResetOTP
+export default SetPasswordPage
