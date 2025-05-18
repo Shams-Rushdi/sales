@@ -1,14 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link,useNavigate } from 'react-router';
 import axios from 'axios';
 import myaxios from "../utils/myaxios";
 
-{/* 
-import { Link } from 'react-router-dom';
-<Link to="/userRegistration.html">Sign Up</Link>
-<Link to="/sendOtp.html">Forget Password</Link> */}
 
 const LoginPage = () => {
+    const navigate = useNavigate();
 
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -23,6 +20,8 @@ const LoginPage = () => {
         ).then((response)=>{
             if(response.data.status === "success")
             {
+                navigate("/dashboard");
+            
                 localStorage.setItem("token", response.data.token)
             }
             else{
